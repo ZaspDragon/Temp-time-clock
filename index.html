@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Time Clock — Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.19.3/dist/xlsx.full.min.js" defer></script>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="auth.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <h1>Time Clock</h1>
+        <p class="subtitle">Employee login + Manager dashboard • Eastern Time stamps</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Sign in</h2>
+      <p class="muted">Use email + password. Managers can view everyone’s hours.</p>
+
+      <form id="loginForm" class="grid2" autocomplete="off">
+        <label>
+          <span>Email</span>
+          <input id="email" type="email" placeholder="name@company.com" required />
+        </label>
+        <label>
+          <span>Password</span>
+          <input id="password" type="password" placeholder="••••••••" required />
+        </label>
+
+        <div class="row">
+          <button class="btn primary" type="submit">Login</button>
+          <button class="btn" id="gotoSignup" type="button">Create account</button>
+        </div>
+        <div id="msg" class="hint"></div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Admin note</h2>
+      <p class="hint">
+        This project uses Firebase Auth + Firestore. After you deploy, create manager accounts and set their role to
+        <strong>manager</strong> in Firestore (instructions in README).
+      </p>
+      <p class="hint"><a class="link" href="README.html">Setup & instructions</a></p>
+    </section>
+
+    <footer class="footer">
+      <span>Secure login • Cloud backup • Export-ready</span>
+    </footer>
+  </main>
+</body>
+</html>

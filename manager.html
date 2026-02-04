@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Time Clock — Manager</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.19.3/dist/xlsx.full.min.js" defer></script>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="manager.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <h1>Manager Dashboard</h1>
+        <p class="subtitle">Search employees • Last week totals • Export master Excel</p>
+      </div>
+      <div class="row">
+        <a class="btn" href="employee.html">Employee View</a>
+        <button class="btn danger" id="logout">Logout</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Filters</h2>
+        <div class="status">
+          <div class="status-label">Signed in as</div>
+          <div id="who" class="status-text">Loading…</div>
+        </div>
+      </div>
+
+      <div class="filters grid4">
+        <label>
+          <span>Company (optional)</span>
+          <input id="company" type="text" placeholder="SideHustle LLP" />
+        </label>
+        <label>
+          <span>Name contains (optional)</span>
+          <input id="name" type="text" placeholder="Jane" />
+        </label>
+        <label>
+          <span>From (EST date)</span>
+          <input id="from" type="date" />
+        </label>
+        <label>
+          <span>To (EST date)</span>
+          <input id="to" type="date" />
+        </label>
+      </div>
+
+      <div class="row" style="margin-top:10px;">
+        <button class="btn" id="lastWeek">Last Week</button>
+        <button class="btn" id="thisWeek">This Week</button>
+        <button class="btn primary" id="run">Run Report</button>
+        <button class="btn" id="exportXlsx">⬇️ Export Master Excel</button>
+      </div>
+
+      <div class="hint" id="msg"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Results</h2>
+        <div class="status">
+          <div class="status-label">Total hours (all results)</div>
+          <div id="grandTotal" class="status-text">—</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Employee</th><th>Company</th><th>Range Hours</th><th>Days</th>
+            </tr>
+          </thead>
+          <tbody id="summaryBody"></tbody>
+        </table>
+      </div>
+
+      <details class="mini">
+        <summary>Show detailed rows</summary>
+        <div class="table-wrap" style="margin-top:10px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th><th>Day</th><th>Name</th><th>Company</th><th>Clock In</th><th>Lunch Out</th><th>End Lunch</th><th>Clock Out</th><th>Lunch (mins)</th><th>Total Hours</th><th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="detailBody"></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+  </main>
+</body>
+</html>

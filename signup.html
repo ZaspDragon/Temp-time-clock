@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Time Clock — Create Account</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="auth.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <h1>Create Account</h1>
+        <p class="subtitle">Employees create their own login • Managers are assigned by admin</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <form id="signupForm" class="grid2" autocomplete="off">
+        <label>
+          <span>Name</span>
+          <input id="name" type="text" placeholder="Jane Doe" required />
+        </label>
+        <label>
+          <span>Company</span>
+          <input id="company" type="text" placeholder="SideHustle LLP" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input id="email" type="email" placeholder="name@company.com" required />
+        </label>
+        <label>
+          <span>Password</span>
+          <input id="password" type="password" placeholder="Create a password" required />
+        </label>
+        <div class="row">
+          <button class="btn primary" type="submit">Create account</button>
+          <a class="btn linklike" href="index.html">Back to login</a>
+        </div>
+        <div id="msg" class="hint"></div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
